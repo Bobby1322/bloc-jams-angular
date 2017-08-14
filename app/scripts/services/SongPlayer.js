@@ -2,7 +2,7 @@
 
     function SongPlayer($rootScope, Fixtures) {
         var SongPlayer = {};
-        var currentAlbum = Fixtures.getAlbum();
+        var currentAlbum = Fixtures.getAlbum();       
 
         /**
         * @desc Buzz object audio file
@@ -64,6 +64,11 @@
         * @type {Number}
         */
         SongPlayer.currentTime = null;
+        /**
+        * @desc Current volume from 0 - 100
+        * @type {Number}
+        */
+        SongPlayer.volume = 75;
 
         /**
         * @function SongPlayer.play
@@ -134,7 +139,18 @@
             }
         };
 
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        };
+
+
         return SongPlayer;
+
+        
+
+    
     }
 
 
